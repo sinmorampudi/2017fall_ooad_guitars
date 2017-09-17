@@ -1,13 +1,39 @@
+/**
+ * This FindGuitarTester class is used to test the functionalities 
+ * like adding guitar,getting price,searching guitar ect
+ * 
+ * 
+ * 
+ * @author Sindhuja Morampudi
+ * @version 1.0
+ * @since   09-09-2017
+ *
+ */
 public class FindGuitarTester {
+	
+	
+/**
+* This is the main method which  makes calls to Guitar 
+* and Inventory classes to fetch and print values like 
+* Price,type,builder ect
+* @param args Unused.
+* @return Nothing.
 
+*/
   public static void main(String[] args) {
     // Set up Rick's guitar inventory
     Inventory inventory = new Inventory();
     initializeInventory(inventory);
+    
 
-    Guitar whatErinLikes = new Guitar("", 0, "fender", "Stratocastor", 
+    Guitar whatErinLikes = new Guitar("V9512", 1549.95, "Fender", "Stratocastor", 
                                       "electric", "Alder", "Alder");
+  //Call to search method from inventory class is made
+  //which in turn returns a Guitar object
     Guitar guitar = inventory.search(whatErinLikes);
+   
+  //Call to different methods of guitar class are made 
+  //to fetch different values like builder.type and printed here
     if (guitar != null) {
       System.out.println("Erin, you might like this " +
         guitar.getBuilder() + " " + guitar.getModel() +  " " +
@@ -20,7 +46,16 @@ public class FindGuitarTester {
     }
   }
 
-  private static void initializeInventory(Inventory inventory) {
+  
+  
+  
+  /**
+ *This method makes call to addGuitar method in inventory class 
+ * and adds the guitar details to a list
+ * @param inventory
+ * @return Nothing.
+ */
+private static void initializeInventory(Inventory inventory) {
     inventory.addGuitar("11277", 3999.95, "Collings", "CJ", "acoustic",
                         "Indian Rosewood", "Sitka");
     inventory.addGuitar("V95693", 1499.95, "Fender", "Stratocastor", "electric",
