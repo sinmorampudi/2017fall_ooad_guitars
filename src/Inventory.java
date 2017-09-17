@@ -2,32 +2,73 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Inventory {
-  private List guitars;
+/**
+ * This class adds the guitar details
+ * to the inventory,search operation
+ * is performed to get the matching details
+ * a particular guitar from inventory
+ * 
+ * 
+ * 
+ * 
+ * @author Sindhuja Morampudi
+ * @version 1.0
+ * @since   09-09-2017
+ */
 
+public class Inventory {
+  private List<Guitar> guitars;
+  
+  
+//constructor
+  
   public Inventory() {
-    guitars = new LinkedList();
+    guitars = new LinkedList<Guitar>();
   }
 
-  public void addGuitar(String serialNumber, double price,
+  /**
+ * This method is used to add guitars to the inventory
+ * @param serialNumber
+ * @param price
+ * @param builder
+ * @param model
+ * @param type
+ * @param backWood
+ * @param topWood
+ */
+public void addGuitar(String serialNumber, double price,
                         String builder, String model,
                         String type, String backWood, String topWood) {
     Guitar guitar = new Guitar(serialNumber, price, builder,
                                model, type, backWood, topWood);
     guitars.add(guitar);
   }
-  public Guitar getGuitar(String serialNumber) {
-    for (Iterator i = guitars.iterator(); i.hasNext(); ) {
-      Guitar guitar = (Guitar)i.next();
+  
+  
+  /**
+ * This method accepts serialNumber as I/P
+ * and returns guitar based on serial number
+ * @param serialNumber
+ * @return guitar
+ */
+public Guitar getGuitar(String serialNumber) {
+    for (Iterator<Guitar> i = guitars.iterator(); i.hasNext(); ) {
+      Guitar guitar = i.next();
       if (guitar.getSerialNumber().equals(serialNumber)) {
         return guitar;
       }
     }
     return null;
   }
-  public Guitar search(Guitar searchGuitar) {
-    for (Iterator i = guitars.iterator(); i.hasNext(); ) {
-      Guitar guitar = (Guitar)i.next();
+  /**
+ * This method is used to search for the 
+ * matching guitar in the inventory
+ * @param searchGuitar
+ * @return guitar
+ */
+public Guitar search(Guitar searchGuitar) {
+    for (Iterator<Guitar> i = guitars.iterator(); i.hasNext(); ) {
+      Guitar guitar =i.next();
       // Ignore serial number since that's unique
       // Ignore price since that's unique
       String builder = searchGuitar.getBuilder();
