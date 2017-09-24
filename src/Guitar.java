@@ -1,19 +1,29 @@
+package Assignment2;
+/**
+ * 
+ * Guitar properties and getter and setter methods are 
+ * defined in this class
+ * 
+ * 
+ * 
+ * @author Sindhuja Morampudi,Divya Kasu
+ * @version 1.0
+ * @since   09-23-2017
+ */
 public class Guitar {
 
-  private String serialNumber, builder, model, type, backWood, topWood;
+  private String serialNumber;
   private double price;
+  GuitarSpec spec;
 
-  public Guitar(String serialNumber, double price,
-                String builder, String model, String type,
-                String backWood, String topWood) {
+//Parameterized constructor
+  public Guitar(String serialNumber, double price, GuitarSpec spec) {
     this.serialNumber = serialNumber;
     this.price = price;
-    this.builder = builder;
-    this.model = model;
-    this.type = type;
-    this.backWood = backWood;
-    this.topWood = topWood;
+    this.spec = spec;
   }
+  
+//getters and setters for guitar properties
 
   public String getSerialNumber() {
     return serialNumber;
@@ -22,22 +32,17 @@ public class Guitar {
   public double getPrice() {
     return price;
   }
+
   public void setPrice(float newPrice) {
     this.price = newPrice;
   }
-  public String getBuilder() {
-    return builder;
+
+  public GuitarSpec getSpec() {
+    return spec;
   }
-  public String getModel() {
-    return model;
+  
+  public String toString(){
+      return serialNumber+"         : "+price;
   }
-  public String getType() {
-    return type;
-  }
-  public String getBackWood() {
-    return backWood;
-  }
-  public String getTopWood() {
-    return topWood;
-  }
+
 }
