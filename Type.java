@@ -1,23 +1,27 @@
-package Assignment2;
+/**
+ * Class: Object-Oriented Design and Analysis
+ * Professor: Orlando Montalvo
+ * Assignment: HW 2
+ * 
+ * Date: 2017-09-20
+ */
+package edu.fsu.Y201709Ooad.guitars_enums;
 
 /**
- * enum for type
+ * Enum for type of Guitar
  * @author Divya Kasu,Sindhuja Morampudi
  */
 public enum Type {
 
 	ACOUSTIC, ELECTRIC;
-	String acctType = "";
 	public String toString(){
 		switch(this){		
 		case ACOUSTIC : 
-			acctType = "acoustic";
-			return acctType;
+			return "acoustic";
 		case ELECTRIC : 
-			acctType = "electric";
-			return acctType;
+			return "electric";
 		 default:  
-			 return "unspecified";
+			return "unspecified";
 		
 		}
 	}
