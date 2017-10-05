@@ -1,16 +1,20 @@
-package Assignment2;
-//package com.oops.concepts;
+/**
+ * Class: Object-Oriented Design and Analysis
+ * Professor: Orlando Montalvo
+ * Assignment: HW 2
+ * 
+ * Date: 2017-10-04
+ */
+package edu.fsu.Y201709Ooad.guitars_enums;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 /**
- * This class adds the guitar details
+ * Adds the guitar details
  * to the inventory,search operation
  * is performed to get the matching details
  * a particular guitar from inventory
- * 
- * 
  * 
  * 
  * @author Sindhuja Morampudi,Divya Kasu
@@ -25,10 +29,10 @@ public class Inventory {
   }
 
   /**
- * adds guitar to inventory
- * @param serialNumber
- * @param price
- * @param spec
+ * Adds guitar to inventory
+ * @param serialNumber,this is the serial number of the guitar given by the store
+ * @param price,this is price of the guitar given by the store
+ * @param spec,this is specifications of the guitar
  */
 public void addGuitar(String serialNumber, double price,
                         GuitarSpec spec) {
@@ -44,9 +48,10 @@ public void addGuitar(String serialNumber, double price,
   
   
   /**
- * searches by serial number
- * @param serialNumber
- * @return guitar or null
+ * Searches  guitar by serial number
+ * @param serialNumber,this is the serial number of the guitar given by the store
+ * @return guitar/null,returns matching guitar based on the search performed  serial number,
+ * null if no matching guitar with the serial number is found
  */
 public Guitar getGuitar(String serialNumber) {
     for (Iterator<Guitar> i = guitars.iterator(); i.hasNext(); ) {
@@ -59,9 +64,10 @@ public Guitar getGuitar(String serialNumber) {
   }
 
   /**
- * returns list of matching guitars
- * @param searchSpec
- * @return matching guitars
+ * Returns list of matching guitars 
+ * @param searchSpec,contains specifications of the guitar
+ * @return matchingGuitars,this is list of guitars from the inventory
+ * which matched with the input given
  */
 public List<Guitar> search(GuitarSpec searchSpec) {
     List<Guitar> matchingGuitars = new ArrayList<Guitar>();
@@ -75,25 +81,27 @@ public List<Guitar> search(GuitarSpec searchSpec) {
 
   
 /**
- * searches by price
- * @param d
- * @return guitar or null
+ * Searches for the guitars with in the price parameter range given
+ * @param d1,d2 d1 is the lower bound price and d2 is the upper bound price
+ * @return matchByPrice,returns list of guitar if they fall in the given price range 
  */
-public Guitar getGuitarByPrice(double d) {
+public List<Guitar> getGuitarByPrice(double d1,double d2) {
+	List<Guitar> matchByPrice = new ArrayList<Guitar>();
 	for (Iterator<Guitar> i = guitars.iterator(); i.hasNext(); ) {
 	      Guitar guitar = (Guitar)i.next();
-	      if (guitar.getPrice()==d) {
-	        return guitar;
+	      
+	      if (guitar.getPrice()>=d1 && guitar.getPrice()<=d2 ) {
+	    	 matchByPrice.add(guitar);
 	      }
 	    }
-	    return null;
+	return matchByPrice;
 }
  
   
 /**
- * searches with incomplete data
- * @param guitindata
- * 
+ * Searches for the guitars when at least one parameter is given
+ * @param guitindata,guitar for which the inventory to be searched
+ * @return matchingGuitars,list of matching guitars from the inventory
  */
 public List<Guitar> getGuitarWithIncompleteData(Guitar guitindata) {
 	List<Guitar> matchingGuitars = new ArrayList<Guitar>();
@@ -107,12 +115,8 @@ public List<Guitar> getGuitarWithIncompleteData(Guitar guitindata) {
 	    		  matchingGuitars.add(guitar);
 	    		 
 	    	  }
-	    	  else if(guitar.getSpec().matches(guitindata.getSpec()))
-	    	  {
-	    		  matchingGuitars.add(guitar);
-	    		  
-	    	  }
-	    	  else if(guitar.getSpec().getModel().equalsIgnoreCase(guitindata.getSpec().getModel()))
+	    	  
+	    	  else if( guitar.getSpec().getModel().equalsIgnoreCase(guitindata.getSpec().getModel()))
 	    	  {
 	    		  matchingGuitars.add(guitar);
 	    		  
