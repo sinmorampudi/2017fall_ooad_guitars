@@ -1,45 +1,40 @@
-package Assignment2;
-
-
 /**
- * enum for Wood
+ * Class: Object-Oriented Design and Analysis
+ * Professor: Orlando Montalvo
+ * Assignment: HW 2
+ * 
+ * Date: 2017-09-20
+ */
+package edu.fsu.Y201709Ooad.guitars_enums;
+/**
+ * Enum for Wood Type for Guitar
  * @author Divya Kasu,Sindhuja Morampudi
  *
  */
 public enum Wood {
 
-	INDIAN_ROSSWOOD, BRAZILIAN_ROSSWOOD, MAHOGANY, MAPPLE, COCOBOLO, CEDER, ADIRONDACK, ALDER, SITKA;
-	String wood = "";
+	INDIAN_ROSEWOOD, BRAZILIAN_ROSSWOOD, MAHOGANY, MAPPLE, COCOBOLO, CEDER, ADIRONDACK, ALDER, SITKA;
 
 	public String toString() {
 		switch (this) {
-		case INDIAN_ROSSWOOD:
-			wood = "Indian Rosewood";
-			return wood;
+		case INDIAN_ROSEWOOD:
+			return "Indian Rosewood";
 		case BRAZILIAN_ROSSWOOD:
-			wood = "Brazilian Rosewood";
-			return wood;
+			return "Brazilian Rosewood";
 		case MAHOGANY:
-			wood = "Mahogany";
-			return wood;
+			return "Mahogany";
 		case MAPPLE:
-			wood = "Maple";
-			return wood;
+			return "Maple";
 		case COCOBOLO:
-			wood = "Cocobolo";
-			return wood;
+			return "Cocobolo";
 		case CEDER:
-			wood = "Cedar";
-			return wood;
+			return "Cedar";
 		case ADIRONDACK:
-			wood = "Adirondack";
-			return wood;
+			return "Adirondack";
 		case ALDER:
-			wood = "Alder";
-			return wood;
+			return "Alder";
 		case SITKA:
-			wood = "Sitka";
-			return wood;
+			return  "Sitka";
 		default: 	
 			return "unspecified";
 
