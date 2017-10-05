@@ -1,4 +1,11 @@
-package Assignment2;
+/**
+ * Class: Object-Oriented Design and Analysis
+ * Professor: Orlando Montalvo
+ * Assignment: HW 2
+ * 
+ * Date: 2017-09-20
+ */
+package edu.fsu.Y201709Ooad.guitars_enums;
 
 import static org.junit.Assert.*;
 
@@ -8,32 +15,36 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * @author Divya Kasu,Sindhuja Morampudi
+ * Unit test for Guitar class to test add,search and fetch functionality
+ */
 public class InventoryTest {
 
 	@Before
 	public void setUp() throws Exception {
 	}
  
-	//test for adding guitar to inventory
+	//Test for adding guitar to inventory
 	@Test
 	public void testAddGuitar() {
 		
 		Inventory test1 = new Inventory();
 		    test1.addGuitar("11277", 3999.95, 
 		    	      new GuitarSpec(Builder.COLLINGS, "CJ", Type.ACOUSTIC, 6,
-		                      Wood.INDIAN_ROSSWOOD, Wood.SITKA));
+		                      Wood.INDIAN_ROSEWOOD, Wood.SITKA));
 		    
 		    test1.addGuitar("V95693", 1499.95, 
 		    	      new GuitarSpec(Builder.FENDER, "Stratocastor", Type.ELECTRIC, 6,
 		                      Wood.ALDER, Wood.ALDER));
 		    
 		    assertEquals(2,test1.getAllGuitars().size());
-		   
+		    
 		    
 		
 	}
 	
-	//test for fetching the guitar from the inventory
+	//Test for fetching the guitar from the inventory
 
 	@Test
 	public void getGuitar() {
@@ -55,16 +66,16 @@ public class InventoryTest {
 		
 	}
 	
-	//test for searching only "GIBSON" as builder
+	//Test for searching only "GIBSON" as builder
 	@Test
 	public void testSearchGuitar1()
 	{	
 		Inventory test3 = new Inventory();
 		test3.addGuitar("152211", 8999.95f, new GuitarSpec(Builder.COLLINGS, "CJ", Type.ACOUSTIC, 6,
-                Wood.INDIAN_ROSSWOOD, Wood.SITKA));
+                Wood.INDIAN_ROSEWOOD, Wood.SITKA));
 		test3.addGuitar("52211", 8999.95f, new GuitarSpec(Builder.FENDER, "Stratocastor", Type.ELECTRIC, 6,
                 Wood.ALDER, Wood.ALDER));
-		test3.addGuitar("V9512", 1549.95,new GuitarSpec(Builder.FENDER, "Stratocastor", Type.ELECTRIC, 6,
+		test3.addGuitar("V9512", 1549.95,new GuitarSpec(Builder.GIBSON, "Stratocastor", Type.ELECTRIC, 6,
                 Wood.ALDER, Wood.ALDER));
 		test3.addGuitar("70108276", 2295.95, 
 			      new GuitarSpec(Builder.GIBSON, "Les Paul", Type.ELECTRIC, 6,
@@ -78,15 +89,20 @@ public class InventoryTest {
 	    Guitar gt = new Guitar("",0.0,whatErinLikes);
 	    MatchedGuitars= test3.getGuitarWithIncompleteData(gt);
 	    System.out.println("only gibson as a builder:");
-	    if (!MatchedGuitars.isEmpty()) 
+	    for(int i=0;i<MatchedGuitars.size();i++)
 	    {
-	      System.out.println("Size of the guitars list is " +MatchedGuitars.size());
-	      assertEquals(1,MatchedGuitars.size());
+	    if (MatchedGuitars.get(i).getSpec().getBuilder().toString().equalsIgnoreCase("GIBSON") )
+	    {
+	    	System.out.println("matching vales found");
+	      
 	    }
+	    }
+	    assertTrue("GIBSON".equalsIgnoreCase((MatchedGuitars.get(0).getSpec().getBuilder()).toString()));
+	    assertFalse("GIBSON1".equalsIgnoreCase((MatchedGuitars.get(1).getSpec().getBuilder()).toString()));
 	    
 	}
 	
-	//test for searching only "FENDER" as builder
+	//Test for searching only "FENDER" as builder
 	@Test
 	public void testSearchGuitar2()
 	{	
@@ -110,15 +126,20 @@ public class InventoryTest {
 	    Guitar gt = new Guitar("",0.0,whatErinLikes);
 	    MatchedGuitars= test3.getGuitarWithIncompleteData(gt);
 	    System.out.println("only Fender as a builder:");
-	    if (!MatchedGuitars.isEmpty()) 
+	    for(int i=0;i<MatchedGuitars.size();i++)
 	    {
-	      System.out.println("Size of the guitars list is " +MatchedGuitars.size());
-	      assertEquals(3,MatchedGuitars.size());
+	    if (MatchedGuitars.get(i).getSpec().getBuilder().toString().equalsIgnoreCase("FENDER" ))
+	    {
+	      
+	      System.out.println("Matching values found");
 	    }
+	    }
+	    assertTrue("FENDER".equalsIgnoreCase((MatchedGuitars.get(0).getSpec().getBuilder()).toString()));
+	    assertFalse("FENDER1".equalsIgnoreCase((MatchedGuitars.get(2).getSpec().getBuilder()).toString()));
 	    
 	}
 	
-	//test for searching only "ELECTRIC" as Type
+	//Test for searching only "ELECTRIC" as Type
 	@Test
 	public void testSearchGuitar3()
 	{	
@@ -142,15 +163,23 @@ public class InventoryTest {
 	    Guitar gt = new Guitar("",0.0,whatErinLikes);
 	    MatchedGuitars= test3.getGuitarWithIncompleteData(gt);
 	    System.out.println("only ELECTRIC as a Type:");
-	    if (!MatchedGuitars.isEmpty()) 
+	    for(int i=0;i<MatchedGuitars.size();i++)
 	    {
-	      System.out.println("Size of the guitars list is " +MatchedGuitars.size());
-	      assertEquals(4,MatchedGuitars.size());
+	    	System.out.println("matching vales found");
+	    if (MatchedGuitars.get(i).getSpec().getType().toString().equalsIgnoreCase("ELECTRIC" ))
+	    	
+	    {
+	      
+	      System.out.println("matching vales found");
 	    }
+	    }
+	    assertTrue("ELECTRIC".equalsIgnoreCase((MatchedGuitars.get(0).getSpec().getType()).toString()));
+	    assertFalse("ELECTRIC1".equalsIgnoreCase((MatchedGuitars.get(1).getSpec().getType()).toString()));
+
 	    
 	}
 	
-	//test for searching with the given parameters
+	//Test for searching with the given parameters
 	@Test
 	public void testSearchGuitar4()
 	{	
@@ -185,6 +214,8 @@ public class InventoryTest {
 	      assertEquals(4,MatchedGuitars.size());
 	    }
 	    
+	    assertTrue("ELECTRIC".equalsIgnoreCase((MatchedGuitars.get(0).getSpec().getType()).toString()));
+	    assertFalse("ALDER1".equalsIgnoreCase((MatchedGuitars.get(1).getSpec().getTopWood()).toString()));
 	}
 	
      
