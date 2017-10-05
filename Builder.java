@@ -1,39 +1,37 @@
-package Assignment2;
+/**
+ * Class: Object-Oriented Design and Analysis
+ * Professor: Orlando Montalvo
+ * Assignment: HW 2
+ * 
+ * Date: 2017-10-04
+ */
+package edu.fsu.Y201709Ooad.guitars_enums;
 
 /**
- * enum for Builder
+ * Enum for Builder name of the  Guitar
  * @author divya kasu,Sindhuja Morampudi
  */
 public enum Builder {
 	
 FENDER, MARTIN,GIBSON,COLLINGS,OLSON,RYAN,PRS, ANY;
-String builder = "";
 public String toString(){
 	switch(this){		
 	case FENDER : 
-		builder = "Fender";
-		return builder;
+		return "Fender";
 	case MARTIN : 
-		builder = "Martin";
-		return builder;
+		return "Martin";
 	case GIBSON : 
-		builder = "Gibson";
-		return builder;
+		return "Gibson";
 	case COLLINGS : 
-		builder = "Collings";
-		return builder;
+		return "Collings";
 	case OLSON : 
-		builder = "Olson";
-		return builder;
+		return "Olson";
 	case RYAN : 
-		builder = "Ryan";
-		return builder;
+		return "Ryan";
 	case PRS : 
-		builder = "PRS";
-		return builder;
+		return "PRS";
 	case ANY : 
-		builder = "Any";
-		return builder;
+		return "Any";
 	default:
 		return "unspecified";
 	}
